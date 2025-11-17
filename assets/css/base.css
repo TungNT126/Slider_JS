@@ -1,0 +1,103 @@
+/* RESET CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+.clear {
+    clear: both;
+}
+
+.text-white {
+    color: #fff !important
+}
+
+/* FOR MOBILE */
+@media screen and (max-width: 46.25em) {
+    #header {
+        overflow: hidden;
+    }
+
+    #header .mobile-menu-btn {
+        display: block;
+    }
+
+    #header .search-btn {
+        display: none;
+    }
+
+    #nav {
+        display: block;
+    }
+
+    #nav > li {
+        display: block;
+    }
+
+    #nav > li:first-child {
+        display: inline-block;
+    }
+
+    #nav .subnav {
+        position: initial;
+    }
+
+    #nav .subnav li {
+        padding: 4px 0;
+        background-color: #ccc;
+    }
+
+    #content .member-list {
+        margin-top: 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #content .member-item {
+        margin-top: 30px;
+    }
+
+    #content .member-img {
+        width: 100%;
+    }
+
+    .locations-list .location-item {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 16px;
+        padding-right: 16px;
+    }
+
+    .contact {
+        flex-direction: column;
+    }
+
+    .contact-info {
+        margin-bottom: 16px;
+    }
+
+    .contact-input-name, .contact-input-email {
+        width: 100%;
+        padding: 12px;
+        margin: 4px 0px;
+    }
+
+    .contact-input-message {
+        margin: 4px 0;
+        padding: 12px;
+    }
+
+    .contact-btn-send .btn-send {
+        margin-top: 16px;
+    }
+
+}
