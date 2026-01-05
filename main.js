@@ -7,6 +7,7 @@ function MakeSlideShow(selector) {
 
     let currentIndex = 0;
 
+    // Tạo nút chấm dưới slide
     function createDots() {
         const dotsHTML = slides.map((_, index) => {
             return `<span class="dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>`;
@@ -14,6 +15,7 @@ function MakeSlideShow(selector) {
         
         dotsContainer.innerHTML = dotsHTML;
         
+        // // Chuyển slide dùng dots
         const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
         dots.map((dot, index) => {
             dot.addEventListener('click', () => goToSlide(index));
@@ -21,6 +23,7 @@ function MakeSlideShow(selector) {
         });
     }
 
+    // Hiện slide
     function showSlide(index) {
         slides.map(slide => {
             slide.classList.remove('active');
@@ -40,17 +43,14 @@ function MakeSlideShow(selector) {
         currentIndex = index;
     }
 
+    // Chuyển đến slide[index]
     function goToSlide(index) {
         showSlide(index);
     }
 
+    // Chuyển đến slide tiếp theo
     function nextSlide() {
         const newIndex = (currentIndex + 1) % slides.length;
-        showSlide(newIndex);
-    }
-
-    function prevSlide() {
-        const newIndex = (currentIndex - 1 + slides.length) % slides.length;
         showSlide(newIndex);
     }
 
@@ -58,25 +58,25 @@ function MakeSlideShow(selector) {
         nextSlide();
     })
 
+    // Quay lại slide trước
+    function prevSlide() {
+        const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(newIndex);
+    }
+
     prevBtn.addEventListener('click', () => {
         prevSlide();
     })
 
+    // Tự động chuyển slide sau 5s
     function setAutoPlay() {
         autoPlay = setInterval(nextSlide, 5000);
     }
 
+    // Hủy tự động chuyển slide
     function clearAutoPlay() {
         clearInterval(autoPlay);
     }
-
-    document.addEventListener('keyup', (e) => {
-        if (e.key === 'ArrowLeft') {
-            prevSlide();
-        } else if (e.key === "ArrowRight") {
-            nextSlide();
-        }
-    })
 
     slideWrapper.addEventListener('mouseenter', () => {
         clearAutoPlay();
@@ -86,6 +86,14 @@ function MakeSlideShow(selector) {
         setAutoPlay();
     })
 
+    // Chuyển slide dùng keyboard
+    document.addEventListener('keyup', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === "ArrowRight") {
+            nextSlide();
+        }
+    })
 
     // Initial
     showSlide(0);
