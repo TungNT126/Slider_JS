@@ -11,6 +11,7 @@
     left: 0;
     right: 0;
     z-index: 1;
+    border-bottom: 1px solid #fff;
 }
 
 #nav {
@@ -111,37 +112,84 @@
 }
 
 /* ========================= SLIDER ==============================*/
-#slider{
-    margin-top: 46px;
-    padding-top: 50%; /*50% chiều ngang của chính nó */
-    background: url('../img/cover_img.png') top center / cover no-repeat;
+.slideshow-conainer {
+    position: relative;
+}
+.slider-wrapper {
+    position: relative;
+    top: 46px;
+}
+.slide {
+    display: none;
+}
+.slide.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+.slide_img {
+    width: 100%;
+    
+}
+.slide-btn {
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(50%);
+    font-size: 20px;
+    border: none;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.slide-btn:hover {
+    background: rgba(0,0,0,0.8);
+}
+.slide-btn.prev-btn {
+    left: 0;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.slide-btn.next-btn {
+    right: 0;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.dots-container {
+    text-align: center;
+    z-index: 2;
     position: relative;
 }
 
-#slider .text-content {
-    position: absolute;
-    bottom: 32px;
-                /* Các cách căn giữa  */
-                        /* 1 */
-    /* left: 50%;
-    transform: translateX(-50%); */
-                        /* 2 */
-    width: 100%;
-                        /* 3 */
-    /* left: 0;
-    right: 0; */
-
-    text-align: center;
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-#slider .text-heading {
-    font-weight: 800;
-    font-size: 24px;
+.dot:hover {
+    background: #999;
 }
 
-#slider .text-description {
-    font-size: 14px;
-    margin-top: 16px;
+.dot.active {
+    background: #3498db;
+    transform: scale(1.2);
 }
 
 /* ========================= CONTENT ==============================*/
@@ -386,6 +434,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    z-index: 3;
 }
 
 .modal-container {
